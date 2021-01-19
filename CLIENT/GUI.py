@@ -8,12 +8,12 @@
 # -------------------------------------
 
 import wx
-from Class.gui.ChatboxFrame import ChatboxFrame
+from Class.gui.MainFrame import MainFrame
 from Class.gui.ChatboxPanel import ChatboxPanel
 
 class Initialization:
     def __init__(self):
         # main init of GUI
         Initialization.app = wx.App()
-        Initialization.chatbox_frame = ChatboxFrame()
+        Initialization.chatbox_frame = MainFrame()
         Initialization.app.MainLoop()
