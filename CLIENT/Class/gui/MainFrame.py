@@ -13,6 +13,7 @@
 import wx
 from Class.gui.LoginPanel import LoginPanel
 from Class.gui.ChatboxPanel import ChatboxPanel
+from Handler.communication.DisconnectHandler import DisconnectHandler as Disconnect
 import time
 
 class MainFrame:
@@ -29,6 +30,7 @@ class MainFrame:
         MainFrame.login_panel.Show()
         MainFrame.frame.Centre()
         MainFrame.frame.Show()
+        MainFrame.frame.Bind(wx.EVT_CLOSE, Disconnect)
 
     def show_chatbox(self):
         MainFrame.chatbox_panel.Show()

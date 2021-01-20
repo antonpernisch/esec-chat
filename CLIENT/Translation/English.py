@@ -41,3 +41,37 @@ class English:
 
     # button text
     send_button = "SEND"
+
+    # -------------
+    # Dialogs
+    # -------------
+
+    # > ERRORS
+    # connection unsuccessful title
+    dialog__error__connUnsuccessful_title = "Connection unsuccessful"
+
+    # connection unsuccessful
+    dialog__error__connUnsuccessful = "Server was not found or is not running as esec-chat server"
+
+    # username taken title
+    dialog__error__usrTaken_title = "Denied"
+
+    # username taken
+    dialog__error__usrTaken = "Username already taken"
+
+    # disconnection failed title
+    dialog__error__failedDisconnection_title = "Couldn't disconnect"
+
+    # disconnection failed
+    dialog__error__failedDisconnection = "Unable to disconnect from the server. Please try again"
+
+    # -------------
+    # Client-side chat information
+    # -------------
+
+    # message prefix for info messages
+    chat__self = "SELF"
+
+    # connected message for client-side, variables are {ip} for ip address of connected server
+    # {port} for the connected port and {username} for chosen username
+    chat__connected = "You have been connected to {ip} as {username}. Have fun!"

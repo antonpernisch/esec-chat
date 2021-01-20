@@ -37,8 +37,8 @@ class LoginPanel(wx.Panel):
         LoginPanel.username_textctrl.SetHint(Locale.login__username_hint)
         LoginPanel.username_textctrl.Bind(wx.EVT_TEXT_ENTER, ConnectHandler)
 
-        connect_btn = wx.Button(self, 0, Locale.login__connect, size=(-1, 40))
-        connect_btn.Bind(wx.EVT_BUTTON, ConnectHandler)
+        LoginPanel.connect_btn = wx.Button(self, 0, Locale.login__connect, size=(-1, 40))
+        LoginPanel.connect_btn.Bind(wx.EVT_BUTTON, ConnectHandler)
 
 
         login_sizer.AddStretchSpacer()
@@ -47,7 +47,7 @@ class LoginPanel(wx.Panel):
         login_sizer.Add(LoginPanel.ip_textctrl, 0, wx.CENTER | wx.TOP, 8)
         login_sizer.Add(pleaseLogin_text, 0, wx.CENTER | wx.TOP, 24)
         login_sizer.Add(LoginPanel.username_textctrl, 0, wx.CENTER | wx.TOP, 8)
-        login_sizer.Add(connect_btn, 0, wx.CENTER | wx.TOP, 32)
+        login_sizer.Add(LoginPanel.connect_btn, 0, wx.CENTER | wx.TOP, 32)
         login_sizer.AddStretchSpacer()
 
         self.SetSizer(login_sizer)
