@@ -13,6 +13,7 @@
 import socket
 from Translation.English import English as Locale
 from Modules.dialogs.ErrorDialog import ErrorDialog as Error
+from Class.communication.MessageListener import MessageListener
 
 class DisconnectHandler:
     def __init__(self, event):
@@ -33,6 +34,7 @@ class DisconnectHandler:
                             s.sendall(body)
                             data = s.recv(1024).decode("utf-8")
                             if data == "ACK-END":
+                                MessageListener.s.close()
                                 MainFrame.frame.Destroy()
                             else:
                                 Error(Locale.dialog__error__failedDisconnection_title, Locale.dialog__error__failedDisconnection)

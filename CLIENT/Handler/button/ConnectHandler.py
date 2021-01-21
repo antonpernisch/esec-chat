@@ -57,7 +57,8 @@ class ConnectHandler:
                 ChatboxPanel.messagebox.SetValue("")
                 ChatboxPanel.messagebox.SetHint(Locale.send_message)
                 ChatboxPanel.messagebox.SetFocus()
-            elif data == "ERR;USR_TAKEN":
-                Error(Locale.dialog__error__usrTaken_title, Locale.dialog__error__usrTaken)
+            elif data[0] == "ERR":
+                if data[1] == "USR_TAKEN":
+                    Error(Locale.dialog__error__usrTaken_title, Locale.dialog__error__usrTaken)
         else:
             return

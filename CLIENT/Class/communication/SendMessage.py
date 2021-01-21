@@ -15,6 +15,8 @@
 import wx
 from Translation.English import English as Locale
 import socket
+from Modules.dialogs.ErrorDialog import ErrorDialog as Error
+from Modules.dialogs.WarningDialog import WarningDialog as Warning
 
 class SendMessage:
     def __init__(self):
@@ -40,6 +42,9 @@ class SendMessage:
             if data.decode("utf-8") == "ACK-MES":
                 ChatboxPanel.messagebox.SetValue("")
                 ChatboxPanel.messagebox.SetHint(Locale.send_message)
+                ChatboxPanel.messagebox.SetFocus()
+            elif data.decode("utf-8") == "ERR;UNAUTH":
+                Warning(Locale.dialog__error__unauth_title, Locale.dialog__error__unauth)
                 ChatboxPanel.messagebox.SetFocus()
             else:
                 # message was not ack'd by server

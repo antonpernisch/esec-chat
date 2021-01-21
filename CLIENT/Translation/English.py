@@ -71,6 +71,12 @@ class English:
     # conn lost failed
     dialog__error__connLost = "Connection lost"
 
+    # unauthorized title
+    dialog__error__unauth_title = "Unauthorized"
+
+    # unauthorized
+    dialog__error__unauth = "You're not allowed to do that"
+
     # -------------
     # Client-side chat information
     # -------------
