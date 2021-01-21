@@ -40,7 +40,6 @@ class ConnectHandler:
             if data[0] == "SYN-ACK":
                 MainFrame.show_chatbox(MainFrame)
                 ConnectHandler.connected = True
-                ConnectHandler.registred_ip = data[1]
                 ConnectHandler.lister_thread = threading.Thread(target=MessageListener)
                 ConnectHandler.lister_thread.start()
 

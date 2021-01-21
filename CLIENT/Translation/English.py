@@ -65,6 +65,12 @@ class English:
     # disconnection failed
     dialog__error__failedDisconnection = "Unable to disconnect from the server. Please try again"
 
+    # conn lost title
+    dialog__error__connLost_title = "Terminated"
+
+    # conn lost failed
+    dialog__error__connLost = "Connection lost"
+
     # -------------
     # Client-side chat information
     # -------------

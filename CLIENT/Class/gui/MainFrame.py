@@ -36,3 +36,8 @@ class MainFrame:
         MainFrame.chatbox_panel.Show()
         MainFrame.login_panel.Hide()
         MainFrame.frame.Layout()
+
+    def show_login(self):
+        MainFrame.chatbox_panel.Hide()
+        MainFrame.login_panel.Show()
+        MainFrame.frame.Layout()
