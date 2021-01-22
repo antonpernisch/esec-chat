@@ -23,6 +23,8 @@ class ConnectHandler:
         from Class.gui.ChatboxPanel import ChatboxPanel
         from Class.communication.MessageListener import MessageListener
 
+        ConnectHandler.listener_threads = list()
+
         username = LoginPanel.username_textctrl.GetValue()
         host = LoginPanel.ip_textctrl.GetValue()
         port = 826
@@ -40,8 +42,9 @@ class ConnectHandler:
             if data[0] == "SYN-ACK":
                 MainFrame.show_chatbox(MainFrame)
                 ConnectHandler.connected = True
-                ConnectHandler.lister_thread = threading.Thread(target=MessageListener)
-                ConnectHandler.lister_thread.start()
+                newThread = threading.Thread(target=MessageListener)
+                ConnectHandler.listener_threads.append(newThread)
+                newThread.start()
 
                 username_font = wx.Font(10, wx.SWISS, wx.NORMAL, wx.BOLD, False, u"Ebrima")
                 message_font = wx.Font(10, wx.SWISS, wx.NORMAL, wx.NORMAL, False, u"Ebrima")
@@ -61,4 +64,5 @@ class ConnectHandler:
                 if data[1] == "USR_TAKEN":
                     Error(Locale.dialog__error__usrTaken_title, Locale.dialog__error__usrTaken)
         else:
+            print("ConnectHandler empty username")
             return

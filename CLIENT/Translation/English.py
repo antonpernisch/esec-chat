@@ -77,6 +77,12 @@ class English:
     # unauthorized
     dialog__error__unauth = "You're not allowed to do that"
 
+    # too fast sending title
+    dialog__error__tooFast_title = "Denied"
+
+    # too fast sending
+    dialog__error__tooFast = "You're typing too fast, calm down and let us proccess something!"
+
     # -------------
     # Client-side chat information
     # -------------

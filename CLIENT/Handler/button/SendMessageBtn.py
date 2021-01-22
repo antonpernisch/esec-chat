@@ -10,12 +10,13 @@
 #
 # -------------------------------------
 
-import wx
-import wx.richtext as rt
+from Class.communication.SendMessage import SendMessage
+from Modules.dialogs.WarningDialog import WarningDialog as Warning
 from Translation.English import English as Locale
-from Class.communication.SendMessage import SendMessage as Send
-import time
 
 class SendMessageBtn:
     def __init__(self, event):
-        Send()
+        if not SendMessage.reserved:
+            SendMessage()
+        else:
+            Warning(Locale.dialog__error__tooFast_title, Locale.dialog__error__tooFast)

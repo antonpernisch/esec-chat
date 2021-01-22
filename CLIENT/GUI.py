@@ -11,10 +11,12 @@ import wx
 from Class.gui.MainFrame import MainFrame
 from Class.gui.ChatboxPanel import ChatboxPanel
 from Handler.button.ConnectHandler import ConnectHandler
+from Class.communication.SendMessage import SendMessage
 
 class Initialization:
     def __init__(self):
         # main init of GUI
+        SendMessage.reserved = False
         ConnectHandler.connected = False
         Initialization.app = wx.App()
         Initialization.chatbox_frame = MainFrame()

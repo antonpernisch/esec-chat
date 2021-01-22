@@ -43,4 +43,4 @@ class ChatboxPanel(wx.Panel):
         try:
             event.Veto()
         except:
-            pass
+            return

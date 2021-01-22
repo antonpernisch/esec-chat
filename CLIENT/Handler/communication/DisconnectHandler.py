@@ -46,4 +46,5 @@ class DisconnectHandler:
                 Error(Locale.dialog__error__failedDisconnection_title, Locale.dialog__error__failedDisconnection)
                 return
         else:
+            print("DESTROYING")
             MainFrame.frame.Destroy()

@@ -13,13 +13,14 @@
 # TODO: check current_message for ; (injection etc)
 
 import wx
-from Translation.English import English as Locale
 import socket
+from Translation.English import English as Locale
 from Modules.dialogs.ErrorDialog import ErrorDialog as Error
 from Modules.dialogs.WarningDialog import WarningDialog as Warning
 
 class SendMessage:
     def __init__(self):
+        SendMessage.reserved = False
         from Class.gui.ChatboxPanel import ChatboxPanel
         from Class.gui.LoginPanel import LoginPanel
 
@@ -30,6 +31,7 @@ class SendMessage:
         message_font = wx.Font(10, wx.SWISS, wx.NORMAL, wx.NORMAL, False, u"Ebrima")
 
         if current_message != "":
+            SendMessage.reserved = True
             username = LoginPanel.username_textctrl.GetValue()
             host = LoginPanel.ip_textctrl.GetValue()
             port = 826
@@ -49,6 +51,8 @@ class SendMessage:
             else:
                 # message was not ack'd by server
                 ChatboxPanel.messagebox.SetFocus()
+            SendMessage.reserved = False
         else:
+            print("SendMessage empty username")
             ChatboxPanel.messagebox.SetFocus()
             return
