@@ -19,6 +19,7 @@ from threading import Timer
 from Translation.English import English as Locale
 from Modules.dialogs.ErrorDialog import ErrorDialog as Error
 from Modules.dialogs.WarningDialog import WarningDialog as Warning
+from Class.communication.ReciveMessage import ReciveMessage
 
 class SendMessage:
     def __init__(self):
@@ -53,9 +54,9 @@ class SendMessage:
                     SendMessage.reserved = False
                     return
             if data.decode("utf-8") == "ERR;SPAM":
-                Warning(Locale.dialog__error__tooFast_title, Locale.dialog__error__tooFast)
                 ChatboxPanel.messagebox.SetFocus()
                 ChatboxPanel.banned = True
+                ReciveMessage.redText("Heads up", "You have been banned for 5 seconds because of spam")
                 t = Timer(5, SendMessage.unban)
                 t.start()
             elif data.decode("utf-8") == "ACK-MES":

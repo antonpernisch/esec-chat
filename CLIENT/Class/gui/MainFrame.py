@@ -18,7 +18,7 @@ import time
 
 class MainFrame:
     def __init__(self):
-        MainFrame.frame = wx.Frame(parent=None, title="esec chat - v1.0 patch 00000", size=(750, 750), style=wx.DEFAULT_FRAME_STYLE)
+        MainFrame.frame = wx.Frame(parent=None, title="esec chat - v1.0 patch 00010", size=(750, 750), style=wx.DEFAULT_FRAME_STYLE)
         panels_sizer = wx.BoxSizer()
         MainFrame.frame.SetSizer(panels_sizer)
         MainFrame.login_panel = LoginPanel(MainFrame.frame)

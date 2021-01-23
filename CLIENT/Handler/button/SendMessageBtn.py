@@ -14,6 +14,7 @@ from Class.communication.SendMessage import SendMessage
 from Modules.dialogs.WarningDialog import WarningDialog as Warning
 from Modules.dialogs.ErrorDialog import ErrorDialog as Error
 from Translation.English import English as Locale
+from Class.communication.ReciveMessage import ReciveMessage
 
 class SendMessageBtn:
     def __init__(self, event):
@@ -22,6 +23,6 @@ class SendMessageBtn:
         if not SendMessage.reserved and not ChatboxPanel.banned:
             SendMessage()
         elif ChatboxPanel.banned:
-            Error(Locale.dialog__error__banned_title, Locale.dialog__error__banned)
+            ReciveMessage.redText("SELF", "You can't send messages right now...")
         else:
             Warning(Locale.dialog__error__tooFast_title, Locale.dialog__error__tooFast)

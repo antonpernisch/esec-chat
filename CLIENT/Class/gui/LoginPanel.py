@@ -25,9 +25,6 @@ class LoginPanel(wx.Panel):
         resizedLogo = wx.BitmapFromImage(image)
         heading_image = wx.StaticBitmap(self, -1, resizedLogo)
 
-        # heading_text = wx.StaticText(self, 0, Locale.login__heading)
-        # heading_text.SetFont(wx.Font(20, wx.SWISS, wx.NORMAL, wx.BOLD))
-
         ipAddress_text = wx.StaticText(self, 0, Locale.login__enter_ip)
         ipAddress_text.SetFont(wx.Font(12, wx.SWISS, wx.NORMAL, wx.NORMAL))
 
@@ -48,7 +45,6 @@ class LoginPanel(wx.Panel):
 
         login_sizer.AddStretchSpacer()
         login_sizer.Add(heading_image, 0, wx.CENTER)
-        #login_sizer.Add(heading_text, 0, wx.CENTER | wx.TOP, 24)
         login_sizer.Add(ipAddress_text, 0, wx.CENTER | wx.TOP, 48)
         login_sizer.Add(LoginPanel.ip_textctrl, 0, wx.CENTER | wx.TOP, 8)
         login_sizer.Add(pleaseLogin_text, 0, wx.CENTER | wx.TOP, 24)

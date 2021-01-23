@@ -34,17 +34,23 @@ class DisconnectHandler:
                             body = b'END;' + bytes(username, 'utf-8')
                             s.sendall(body)
                             data = s.recv(1024).decode("utf-8")
-                            if data == "ACK-END":
+                            if data:
                                 MessageListener.s.close()
                                 MainFrame.frame.Destroy()
                             else:
                                 Error(Locale.dialog__error__failedDisconnection_title, Locale.dialog__error__failedDisconnection)
                                 return
                         except:
-                            Error(Locale.dialog__error__failedDisconnection_title, Locale.dialog__error__failedDisconnection)
-                            return
+                            try:
+                                MessageListener.s.close()
+                                MainFrame.frame.Destroy()
+                            except:
+                                MainFrame.frame.Destroy()
             except:
-                Error(Locale.dialog__error__failedDisconnection_title, Locale.dialog__error__failedDisconnection)
-                return
+                try:
+                    MessageListener.s.close()
+                    MainFrame.frame.Destroy()
+                except:
+                    MainFrame.frame.Destroy()
         else:
             MainFrame.frame.Destroy()

@@ -43,18 +43,7 @@ class MessageListener:
                     newThread = threading.Thread(target=MessageListener)
                     ConnectHandler.listener_threads.append(newThread)
                     newThread.start()
-
-                    username_font = wx.Font(10, wx.SWISS, wx.NORMAL, wx.BOLD, False, u"Ebrima")
-                    message_font = wx.Font(10, wx.SWISS, wx.NORMAL, wx.NORMAL, False, u"Ebrima")
-
-                    ChatboxPanel.chatbox.BeginParagraphSpacing(0, 0)
-                    ChatboxPanel.chatbox.BeginFontSize(12)
-                    ChatboxPanel.chatbox.BeginBold()
-                    ChatboxPanel.chatbox.WriteText("\n" + data[1] + ": ")
-                    ChatboxPanel.chatbox.EndBold()
-                    ChatboxPanel.chatbox.WriteText(data[2])
-                    ChatboxPanel.chatbox.ShowPosition(ChatboxPanel.chatbox.GetLastPosition())
-                    SendMessage.reserved = False
+                    ReciveMessage.__init__(data[1], data[2])
                     return
             else:
                 if not DisconnectHandler.disconnecting:
