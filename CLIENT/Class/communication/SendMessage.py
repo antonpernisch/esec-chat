@@ -25,6 +25,8 @@ class SendMessage:
         SendMessage.reserved = False
         from Class.gui.ChatboxPanel import ChatboxPanel
         from Class.gui.LoginPanel import LoginPanel
+        from Handler.button.ConnectHandler import ConnectHandler
+        from Class.gui.MainFrame import MainFrame
 
         current_message = ChatboxPanel.messagebox.GetValue()
         username = LoginPanel.username_textctrl.GetValue()
@@ -41,8 +43,15 @@ class SendMessage:
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 s.connect_ex((host, port))
                 body = b'MES;' + bytes(username, 'utf-8') + b";" + bytes(current_message, 'utf-8')
-                s.sendall(body)
-                data = s.recv(1024)
+                try:
+                    s.sendall(body)
+                    data = s.recv(1024)
+                except OSError:
+                    Error(Locale.dialog__error__connLost_title, Locale.dialog__error__connLost)
+                    ConnectHandler.connected = False
+                    MainFrame.show_login(MainFrame)
+                    SendMessage.reserved = False
+                    return
             if data.decode("utf-8") == "ERR;SPAM":
                 Warning(Locale.dialog__error__tooFast_title, Locale.dialog__error__tooFast)
                 ChatboxPanel.messagebox.SetFocus()

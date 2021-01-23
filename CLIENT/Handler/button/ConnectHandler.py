@@ -43,6 +43,7 @@ class ConnectHandler:
                     Error(Locale.dialog__error__connUnsuccessful_title, Locale.dialog__error__connUnsuccessful)
                     return
             if data[0] == "SYN-ACK":
+                ChatboxPanel.chatbox.SetValue("")
                 MainFrame.show_chatbox(MainFrame)
                 ConnectHandler.connected = True
                 newThread = threading.Thread(target=MessageListener)
