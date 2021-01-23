@@ -14,6 +14,8 @@
 
 import wx
 import socket
+import time
+from threading import Timer
 from Translation.English import English as Locale
 from Modules.dialogs.ErrorDialog import ErrorDialog as Error
 from Modules.dialogs.WarningDialog import WarningDialog as Warning
@@ -41,7 +43,13 @@ class SendMessage:
                 body = b'MES;' + bytes(username, 'utf-8') + b";" + bytes(current_message, 'utf-8')
                 s.sendall(body)
                 data = s.recv(1024)
-            if data.decode("utf-8") == "ACK-MES":
+            if data.decode("utf-8") == "ERR;SPAM":
+                Warning(Locale.dialog__error__tooFast_title, Locale.dialog__error__tooFast)
+                ChatboxPanel.messagebox.SetFocus()
+                ChatboxPanel.banned = True
+                t = Timer(5, SendMessage.unban)
+                t.start()
+            elif data.decode("utf-8") == "ACK-MES":
                 ChatboxPanel.messagebox.SetValue("")
                 ChatboxPanel.messagebox.SetHint(Locale.send_message)
                 ChatboxPanel.messagebox.SetFocus()
@@ -53,6 +61,11 @@ class SendMessage:
                 ChatboxPanel.messagebox.SetFocus()
             SendMessage.reserved = False
         else:
-            print("SendMessage empty username")
             ChatboxPanel.messagebox.SetFocus()
             return
+    
+    def unban():
+        from Class.gui.ChatboxPanel import ChatboxPanel
+
+        ChatboxPanel.banned = False
+        return

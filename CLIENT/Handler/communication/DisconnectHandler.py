@@ -20,6 +20,7 @@ class DisconnectHandler:
         from Class.gui.MainFrame import MainFrame
         from Handler.button.ConnectHandler import ConnectHandler
         from Class.gui.LoginPanel import LoginPanel
+        DisconnectHandler.disconnecting = True
 
         username = LoginPanel.username_textctrl.GetValue()
         host = LoginPanel.ip_textctrl.GetValue()
@@ -46,5 +47,4 @@ class DisconnectHandler:
                 Error(Locale.dialog__error__failedDisconnection_title, Locale.dialog__error__failedDisconnection)
                 return
         else:
-            print("DESTROYING")
             MainFrame.frame.Destroy()

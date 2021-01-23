@@ -18,6 +18,7 @@ from Translation.English import English as Locale
 class ChatboxPanel(wx.Panel):
     def __init__(self, parent):
         super().__init__(parent)
+        ChatboxPanel.banned = False
 
         chatbox_sizer = wx.BoxSizer(wx.VERTICAL)
 

@@ -24,6 +24,7 @@ class MessageListener:
         from Class.gui.ChatboxPanel import ChatboxPanel
         from Class.gui.MainFrame import MainFrame
         from Class.communication.SendMessage import SendMessage
+        from Handler.communication.DisconnectHandler import DisconnectHandler
 
         username = LoginPanel.username_textctrl.GetValue()
         host = LoginPanel.ip_textctrl.GetValue()
@@ -56,16 +57,20 @@ class MessageListener:
                     SendMessage.reserved = False
                     return
             else:
-                print("MessageListener last else")
+                if not DisconnectHandler.disconnecting:
+                    Error(Locale.dialog__error__connLost_title, Locale.dialog__error__connLost)
+                    ConnectHandler.connected = False
+                    MainFrame.show_login(MainFrame)
+                    SendMessage.reserved = False
+                    return
+                else:
+                    return
+        except:
+            if not DisconnectHandler.disconnecting:
                 Error(Locale.dialog__error__connLost_title, Locale.dialog__error__connLost)
                 ConnectHandler.connected = False
                 MainFrame.show_login(MainFrame)
                 SendMessage.reserved = False
                 return
-        except:
-            print("MessageListener last except")
-            Error(Locale.dialog__error__connLost_title, Locale.dialog__error__connLost)
-            ConnectHandler.connected = False
-            MainFrame.show_login(MainFrame)
-            SendMessage.reserved = False
-            return
+            else:
+                return

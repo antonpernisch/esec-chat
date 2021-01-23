@@ -12,5 +12,4 @@
 
 class ReciveMessage:
     def __init__(sender, message):
-        print("ReciveMessage handler")
         return

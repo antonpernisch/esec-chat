@@ -83,6 +83,12 @@ class English:
     # too fast sending
     dialog__error__tooFast = "You're typing too fast, calm down and let us proccess something!"
 
+    # too fast sending title
+    dialog__error__banned_title = "Denied"
+
+    # too fast sending
+    dialog__error__banned = "You're banned because of spamming, please wait 5 seconds..."
+
     # -------------
     # Client-side chat information
     # -------------

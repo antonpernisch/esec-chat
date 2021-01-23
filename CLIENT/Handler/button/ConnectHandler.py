@@ -22,6 +22,9 @@ class ConnectHandler:
         from Class.gui.MainFrame import MainFrame
         from Class.gui.ChatboxPanel import ChatboxPanel
         from Class.communication.MessageListener import MessageListener
+        from Handler.communication.DisconnectHandler import DisconnectHandler
+
+        DisconnectHandler.disconnecting = True
 
         ConnectHandler.listener_threads = list()
 
@@ -64,5 +67,4 @@ class ConnectHandler:
                 if data[1] == "USR_TAKEN":
                     Error(Locale.dialog__error__usrTaken_title, Locale.dialog__error__usrTaken)
         else:
-            print("ConnectHandler empty username")
             return
